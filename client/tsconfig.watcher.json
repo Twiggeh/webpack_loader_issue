@@ -1,0 +1,32 @@
+{
+	"compilerOptions": {
+		"target": "esnext",
+		"lib": ["esnext", "dom", "DOM.Iterable"],
+		"types": ["node"],
+		"allowSyntheticDefaultImports": true,
+		"forceConsistentCasingInFileNames": true,
+		"alwaysStrict": true,
+		"strict": true,
+		"module": "esnext",
+		"moduleResolution": "node",
+		"resolveJsonModule": true,
+		"strictNullChecks": true,
+		"noImplicitAny": true,
+		"noEmit": true,
+		"typeRoots": ["./src/@types/", "./node_modules/@types/"],
+		"baseUrl": ".",
+		"removeComments": true,
+		"jsx": "react-jsx",
+		"esModuleInterop": true,
+		"skipLibCheck": true,
+		"rootDirs": ["./wire-webapp/src/script"],
+		"paths": {
+			"Components/*": ["./wire-webapp/src/script/components/*"],
+			"I18n/*": ["./wire-webapp/src/i18n/*"],
+			"Resource/*": ["./wire-webapp/resource/*"],
+			"Util/*": ["./wire-webapp/src/script/util/*"]
+		}
+	},
+	"include": ["src"],
+	"exclude": ["api", "auth", "node_modules", "server", "electron", "sw.js", "wire-webapp"]
+}

@@ -1,0 +1,191 @@
+/*
+ * Wire
+ * Copyright (C) 2018 Wire Swiss GmbH
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program. If not, see http://www.gnu.org/licenses/.
+ *
+ */
+
+.participant-item-wrapper {
+  position: relative;
+  display: block;
+
+  &:not(.no-underline)::after {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: @left-list-item-left-width;
+    height: 1px;
+    background-color: currentColor;
+    content: '';
+    opacity: 0.06;
+  }
+
+  .camera-icon,
+  .disclose-icon,
+  .federation-icon,
+  .guest-icon,
+  .mic-off-icon,
+  .mic-on-icon,
+  .participant-mic-on-icon,
+  .partner-icon,
+  .screenshare-icon,
+  .verified-icon {
+    display: flex;
+    margin-left: 16px;
+  }
+
+  .camera-icon {
+    width: 12px !important;
+    height: 9px;
+  }
+
+  .mic-off-icon,
+  .mic-on-icon,
+  .participant-mic-on-icon,
+  .screenshare-icon {
+    height: 12px;
+  }
+
+  .camera-icon,
+  .federation-icon,
+  .guest-icon svg,
+  .mic-off-icon,
+  .mic-on-icon,
+  .partner-icon svg,
+  .screenshare-icon {
+    fill: currentColor;
+    opacity: 0.48;
+  }
+
+  svg[data-uie-name='mic-icon-on'][data-uie-active='inactive'] path {
+    fill: #9c9fa0;
+  }
+
+  .disclose-icon {
+    display: none;
+
+    path {
+      fill: var(--background-fade-40);
+    }
+  }
+
+  &.show-arrow .disclose-icon {
+    display: flex;
+  }
+
+  &.highlighted {
+    animation: fadeInUserHighlighting 1s @ease-out-quart;
+    background-color: var(--background-fade-8);
+  }
+
+  .participant-item {
+    display: flex;
+    overflow: hidden;
+    height: 56px;
+    align-items: center;
+    padding-right: 16px;
+    margin: 0;
+    cursor: pointer;
+
+    &__image {
+      position: relative;
+      display: flex;
+      width: 60px;
+      height: @avatar-diameter-m;
+      flex: 0 0 auto;
+      align-items: center;
+      justify-content: center;
+    }
+
+    &__content {
+      display: flex;
+      min-width: 0; // this will ensure that ellipses is working
+      height: @avatar-diameter-m;
+      flex: 1 1;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: center;
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 16px;
+
+      &__availability {
+        .availability-state-label {
+          .ellipsis;
+        }
+
+        .availability-state-icon {
+          display: flex;
+        }
+      }
+
+      &__name-wrapper {
+        display: flex;
+        overflow: hidden;
+        width: 100%;
+        padding-right: 8px;
+      }
+
+      &__name {
+        .ellipsis;
+        max-width: 100%;
+        white-space: nowrap;
+      }
+
+      &__self-indicator {
+        margin-left: 4px;
+      }
+
+      &__info {
+        .ellipsis;
+        display: flex;
+        max-width: 100%;
+        margin-top: 2px;
+        font-size: 0;
+        line-height: 16px;
+        opacity: 0.56;
+
+        * {
+          font-size: 12px;
+        }
+
+        &__username {
+          .ellipsis;
+          display: block;
+        }
+      }
+
+      &__badge::before {
+        display: inline-block;
+        margin: 0 4px;
+        content: '\00b7';
+      }
+    }
+  }
+
+  &.no-interaction .participant-item {
+    cursor: default;
+  }
+}
+
+@keyframes fadeInUserHighlighting {
+  0%,
+  50% {
+    background-color: var(--background-fade-0);
+  }
+  100% {
+    background-color: var(--background-fade-8);
+  }
+}

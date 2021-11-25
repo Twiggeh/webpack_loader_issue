@@ -1,0 +1,9 @@
+{
+  "useTabs": true,
+  "jsxSingleQuote": true,
+  "printWidth": 90,
+  "singleQuote": true,
+  "jsxBracketSameLine": true,
+  "documentSelectors": ["**/*.svg"],
+  "arrowParens": "avoid"
+}

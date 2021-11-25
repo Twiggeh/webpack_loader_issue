@@ -1,0 +1,202 @@
+/*
+ * Wire
+ * Copyright (C) 2018 Wire Swiss GmbH
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program. If not, see http://www.gnu.org/licenses/.
+ *
+ */
+
+.group-video-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.group-video {
+  position: relative;
+  width: 100%;
+  height: 100%;
+
+  &__minimized-wrapper {
+    position: relative;
+    overflow: hidden;
+    height: 168px;
+    margin: 0 8px 16px;
+    border-radius: 8px;
+
+    &--no-camera-access {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: var(--foreground-fade-16);
+      color: var(--background);
+      font-size: 12px;
+      font-weight: 600;
+      text-align: center;
+      text-transform: uppercase;
+    }
+
+    &__overlay {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: var(--background-fade-40);
+      border-radius: 8px;
+      cursor: pointer;
+      opacity: 0;
+      transition: opacity @animation-timing-fast @ease-out-quart;
+
+      fullscreen-icon {
+        svg {
+          width: 24px;
+          height: 24px;
+
+          path {
+            fill: #fff;
+          }
+        }
+      }
+
+      &:hover {
+        opacity: 1;
+      }
+    }
+  }
+
+  &-grid {
+    position: relative;
+    display: flex;
+    width: 100%;
+    height: 100%;
+    flex-wrap: wrap;
+    justify-content: center;
+    --rows: 1;
+    --columns: 1;
+
+    &__element {
+      position: relative;
+      overflow: hidden;
+      width: calc(100% / var(--columns));
+      height: calc(100% / var(--rows));
+      box-sizing: border-box;
+
+      &--empty {
+        overflow: hidden;
+        width: 0;
+        height: 0;
+      }
+
+      &--rounded video {
+        border-radius: 8px;
+      }
+
+      &-video {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      &__label {
+        position: absolute;
+        bottom: 0;
+        display: flex;
+        max-width: calc(100% - 16px);
+        align-items: center;
+        padding: 8px;
+        margin: 8px;
+        backdrop-filter: blur(10px);
+        background-color: rgba(128, 128, 128, 0.24);
+        border-radius: 100px;
+        color: #fff;
+        font-size: 12px;
+        line-height: 1em;
+        opacity: 0;
+        white-space: nowrap;
+
+        .hide-controls & {
+          opacity: 1;
+          transition: opacity 0.25s ease-in-out;
+        }
+
+        &__icon {
+          margin-right: 8px;
+          svg {
+            width: 16px;
+            path {
+              fill: #fff;
+            }
+          }
+        }
+
+        &__name {
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
+      }
+    }
+
+    &__mute-overlay,
+    &__pause-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      display: flex;
+      width: 100%;
+      height: 100%;
+      align-items: center;
+      justify-content: center;
+      background-color: var(--background-fade-16);
+      transform: translateZ(0);
+
+      svg path {
+        fill: #fff;
+      }
+
+      &__label {
+        z-index: 1;
+        max-width: 50%;
+        color: #fff;
+        font-size: 14px;
+        font-weight: @font-weight-bold;
+        text-align: center;
+      }
+
+      .background {
+        transition: none;
+      }
+    }
+  }
+
+  &__thumbnail {
+    position: absolute;
+    top: 32px;
+    right: 32px;
+    overflow: hidden;
+    width: 160px;
+    border-radius: 4px;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.16);
+    line-height: 0;
+
+    &-video {
+      width: 100%;
+      border-radius: 4px;
+    }
+  }
+}

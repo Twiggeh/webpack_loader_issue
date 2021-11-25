@@ -1,0 +1,14 @@
+src/i18n/
+.nyc_output
+.vscode/
+/config
+/docs/auth-coverage
+/docs/coverage
+/package-lock.json
+/resource
+/src/ext
+/electron/build
+CHANGELOG.md
+node_modules
+npm-debug.log
+yarn-error.log

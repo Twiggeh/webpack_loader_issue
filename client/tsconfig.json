@@ -1,0 +1,30 @@
+{
+	"compilerOptions": {
+		"target": "esnext",
+		"lib": ["esnext", "dom", "DOM.Iterable"],
+		"allowSyntheticDefaultImports": true,
+		"forceConsistentCasingInFileNames": true,
+		"strict": true,
+		"module": "esnext",
+		"moduleResolution": "node",
+		"resolveJsonModule": true,
+		"strictNullChecks": true,
+		"noEmit": true,
+		"typeRoots": ["./src/@types", "./node_modules/@types"],
+		"baseUrl": ".",
+		"removeComments": true,
+		"jsx": "react-jsx",
+		"esModuleInterop": true,
+		"types": ["node", "@emotion/react/types/css-prop"],
+		"allowJs": true,
+		"skipLibCheck": true,
+		"sourceMap": true,
+		"useDefineForClassFields": true,
+		"alwaysStrict": true,
+		"isolatedModules": true,
+		"noUncheckedIndexedAccess": true,
+		"jsxImportSource": "@emotion/react"
+	},
+	"include": ["src", "Forms"],
+	"exclude": ["node_modules", "wire_override"]
+}
